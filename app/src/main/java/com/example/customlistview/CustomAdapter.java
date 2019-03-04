@@ -7,14 +7,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomAdapter extends ArrayAdapter<Student> {
 
-    Student[] students1;
+    ArrayList<Student> students1;
 
-    public CustomAdapter( Context context, int resource, Student[] students) {
+    public CustomAdapter(Context context, int resource, ArrayList<Student> students) {
         super(context, resource, students);
         this.students1=students;
 
@@ -35,11 +37,18 @@ public class CustomAdapter extends ArrayAdapter<Student> {
         image.setImageResource(R.drawable.ic_launcher_background);
         */
 
-        Student std=students1[position];
+        Student std=students1.get(position);
 
         name.setText(std.getName());
         id.setText(std.getId());
         image.setImageResource(std.getStudent_image());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         return view;
 
